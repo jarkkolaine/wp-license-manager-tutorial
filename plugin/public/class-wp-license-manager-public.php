@@ -37,12 +37,10 @@ class Wp_License_Manager_Public {
 	 * @var      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-        $this->api = new License_Manager_API();
-
+        $this->api = new Wp_License_Manager_API();
 	}
 
 	/**
@@ -114,7 +112,7 @@ class Wp_License_Manager_Public {
      * The permalink structure definition for API calls.
      */
     public function add_api_endpoint_rules() {
-        add_rewrite_rule( '^api/license-manager/?([0-9a-zA-Z]+)?/?',
+        add_rewrite_rule( '^api/license-manager/v1/?([0-9a-zA-Z]+)?/?',
             'index.php?__wp_license_api=$matches[1]', 'top' );
 
         // If this was the first time, flush rules

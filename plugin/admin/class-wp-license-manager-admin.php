@@ -207,8 +207,8 @@ class Wp_License_Manager_Admin {
         $license_deleted = false;
 
         // Handle the delete action
-        if ( isset($_REQUEST['action'] ) ) {
-            if ($_REQUEST['action'] == 'delete') {
+        if ( isset( $_REQUEST['action'] ) ) {
+            if ( $_REQUEST['action'] == 'delete' ) {
                 if ( check_admin_referer( 'wp-license-manager-delete-license', 'wp-license-manager-delete-license-nonce' ) ) {
 
                     // Delete the license
@@ -216,7 +216,6 @@ class Wp_License_Manager_Admin {
                     $wpdb->delete( $table_name, array( 'id' => $_REQUEST['license'] ) );
 
                     $license_deleted = true;
-
                 }
             }
         }

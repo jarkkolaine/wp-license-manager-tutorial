@@ -108,7 +108,7 @@ class Wp_License_Manager {
         /**
          * The class responsible for handling the incoming license manager API calls.
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-license-manager-api.php';
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-license-manager-api.php';
 
         /**
          * A wrapper class for our Amazon S3 connectivity.
@@ -153,8 +153,8 @@ class Wp_License_Manager {
         $this->loader->add_action( 'save_post', $plugin_admin, 'save_product_information_meta_box' );
 
         // Plugin settings menu
-        $this->loader->add_action( 'admin_init', $plugin_admin, 'add_plugin_settings_fields');
-        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_settings_page');
+        $this->loader->add_action( 'admin_init', $plugin_admin, 'add_plugin_settings_fields' );
+        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_settings_page' );
 
         // Add licenses menu
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_licenses_menu_page' );
@@ -184,8 +184,8 @@ class Wp_License_Manager {
 
         // The external API setup
         $this->loader->add_filter( 'query_vars', $plugin_public, 'add_api_query_vars' );
-        $this->loader->add_action( 'parse_request', $plugin_public, 'sniff_api_requests' );
         $this->loader->add_action( 'init', $plugin_public, 'add_api_endpoint_rules' );
+        $this->loader->add_action( 'parse_request', $plugin_public, 'sniff_api_requests' );
     }
 
 	/**
