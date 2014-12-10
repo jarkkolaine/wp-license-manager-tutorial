@@ -79,7 +79,7 @@ class Wp_License_Manager_Admin {
 
         if ( ! is_array( $product_meta ) ) {
             $product_meta = array(
-                'bucket' => '',
+                'file_bucket' => '',
                 'file_name' => '',
                 'version' => '',
                 'tested' => '',

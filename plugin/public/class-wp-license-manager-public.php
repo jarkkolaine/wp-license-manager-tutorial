@@ -112,13 +112,13 @@ class Wp_License_Manager_Public {
      * The permalink structure definition for API calls.
      */
     public function add_api_endpoint_rules() {
-        add_rewrite_rule( '^api/license-manager/v1/?([0-9a-zA-Z]+)?/?',
+        add_rewrite_rule( 'api/license-manager/v1/(info|get)/?',
             'index.php?__wp_license_api=$matches[1]', 'top' );
 
         // If this was the first time, flush rules
-        if ( get_option( 'wp-license-manager-rewrite-rules-version' ) != '1.0' ) {
+        if ( get_option( 'wp-license-manager-rewrite-rules-version' ) != '1.1' ) {
             flush_rewrite_rules();
-            update_option( 'wp-license-manager-rewrite-rules-version', '1.0' );
+            update_option( 'wp-license-manager-rewrite-rules-version', '1.1' );
         }
     }
 

@@ -101,7 +101,7 @@ class Wp_License_Manager_API {
      */
     private function product_info( $product, $product_id, $email, $license_key ) {
         // Collect all the metadata we have and return it to the caller
-        $meta = get_post_meta( $product->ID, 'wp_license_manager_product_meta' );
+        $meta = get_post_meta( $product->ID, 'wp_license_manager_product_meta', true );
 
         $version = isset( $meta['version'] ) ? $meta['version'] : '';
         $tested = isset( $meta['tested'] ) ? $meta['tested'] : '';
@@ -131,9 +131,9 @@ class Wp_License_Manager_API {
      */
     private function get_product( $product, $product_id, $email, $license_key ) {
         // Get the AWS data from post meta fields
-        $meta = get_post_meta( $product->ID, 'wp_license_manager_product_meta' );
+        $meta = get_post_meta( $product->ID, 'wp_license_manager_product_meta', true );
         $bucket = isset ( $meta['file_bucket'] ) ? $meta['file_bucket'] : '';
-        $file_name = isset ( $meta['file_bucket'] ) ? $meta['file_bucket'] : '';
+        $file_name = isset ( $meta['file_name'] ) ? $meta['file_name'] : '';
 
         if ( $bucket == '' || $file_name == '' ) {
             // No file set, return error
@@ -214,7 +214,7 @@ class Wp_License_Manager_API {
      * @param $response array   The response as associative array.
      */
     private function send_response( $response ) {
-        echo json_encode( $response ) . '\n';
+        echo json_encode( $response );
     }
 
 }

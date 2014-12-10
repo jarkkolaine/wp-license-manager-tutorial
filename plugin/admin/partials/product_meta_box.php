@@ -72,7 +72,7 @@
     </label>
     <input type="text" id="wp_license_manager_product_bucket"
            name="wp_license_manager_product_bucket"
-           value="<?php echo esc_attr( $product_meta['bucket'] ); ?>"
+           value="<?php echo esc_attr( $product_meta['file_bucket'] ); ?>"
            size="25" />
 </p>
 <p>
